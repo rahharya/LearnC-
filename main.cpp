@@ -2,6 +2,8 @@
 #include <string>
 #include <math.h>
 
+enum SortList{ACCENDANT, DECENDANT};
+
 using namespace std;
 int _CE30ReversingNumber(int n)
 {
@@ -72,6 +74,43 @@ void _89LinearSearch_SearchKeyInArray(float fInputArray[], int nArraySize, const
     if(!bKeyFounded) cout<<"Key not founded"<<endl;
 }
 
+void SortArray(int nInputArray[], unsigned nArraySize, SortList mList)
+{
+    int i,j,temp;
+    if(mList==ACCENDANT)
+    {
+        for(i=0;i<=nArraySize;i++)
+        {
+            for(j=0;j<=nArraySize-i;j++)
+            {
+                if(nInputArray[j]>nInputArray[j+1])
+                {
+                    temp=nInputArray[j];
+                    nInputArray[j]=nInputArray[j+1];
+                    nInputArray[j+1]=temp;
+                }
+            }
+        }
+    }
+    else
+    {
+        for(i=0;i<nArraySize;i++)
+	    {		
+            for(j=i+1;j<nArraySize;j++)
+            {
+                if(nInputArray[i]<nInputArray[j])
+                {
+                    temp  =nInputArray[i];
+                    nInputArray[i]=nInputArray[j];
+                    nInputArray[j]=temp;
+                }
+            }
+	    }
+    }
+    
+    
+}
+
 int main(void)
 {
     //CE30 and CE31
@@ -81,19 +120,27 @@ int main(void)
         cin>>nNumber;
         _CE31IsPalindrome(nNumber);
     */
-    //81
+
     _85C11NewFeatureWithAuto();
 
-    float _fArray[]={3,6.56f,7.345f,6.123f,8.78f,3.56f,1.456f};
-    const float fKey = 6.0f;
-    _89LinearSearch_SearchKeyInArray(_fArray,4,fKey);
+    float _fArray[]={3,6.56f,7.345f,6.123f,8.78f,3.56f,1.456f}; //7Element
+    int nArray[]={4,5,7,9,3,12,3,46,58,47,25,31,8,6}; //14 Element
+    const float fKey = 1.456f;
+    const int nKey=9;
+    _89LinearSearch_SearchKeyInArray(_fArray,7,fKey);
+
+    //Sorting 
+    cout<<"Before: "; for(auto x:nArray) cout<<x<<" "; cout<<endl;
+    SortArray(nArray,14,DECENDANT);
+    cout<<"After : "; for(auto x:nArray) cout<<x<<" "; cout<<endl;
+
+    
 
     start:
     
     // cout<<"Enter a and b: "; cin>>na>>nb; _81GreatestCommonDivider(na,nb); cout<<endl;
     
     goto start;
-    system("PAUSE");
     return 0;
 }
 
