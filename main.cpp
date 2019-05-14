@@ -57,6 +57,21 @@ void _85C11NewFeatureWithAuto()
     cout<<"Max: "<<fmax<<endl;
 }
 
+void _89LinearSearch_SearchKeyInArray(float fInputArray[], int nArraySize, const float key)
+{
+    bool bKeyFounded= false;
+    for(int i=0;i<nArraySize;i++)
+    {
+        if(fInputArray[i]==key)
+        {
+            bKeyFounded=true;
+            cout<<"Key founded in Array"<<endl;
+            break;
+        }
+    }
+    if(!bKeyFounded) cout<<"Key not founded"<<endl;
+}
+
 int main(void)
 {
     //CE30 and CE31
@@ -67,8 +82,12 @@ int main(void)
         _CE31IsPalindrome(nNumber);
     */
     //81
-    int na,nb;
     _85C11NewFeatureWithAuto();
+
+    float _fArray[]={3,6.56f,7.345f,6.123f,8.78f,3.56f,1.456f};
+    const float fKey = 6.0f;
+    _89LinearSearch_SearchKeyInArray(_fArray,4,fKey);
+
     start:
     
     // cout<<"Enter a and b: "; cin>>na>>nb; _81GreatestCommonDivider(na,nb); cout<<endl;
