@@ -30,3 +30,59 @@ void _81GreatestCommonDivider(int a, int b)
     }
     cout<<"Greatest Common Divider is "<<a<<endl;
 }
+
+void _94DrawingPattern1()
+{
+    int count=1;
+    for(int i=0;i<4;i++)
+    {
+        for(int j=0;j<4;j++)
+        {
+            cout<<count++<<" ";
+        }
+        cout<<endl;
+    }
+}
+
+void _95DrawingPattern2(int sorting, int dimension)
+{
+    for(int i=0;i<dimension;i++)
+    {
+        for(int j=0;j<dimension;j++)
+        {
+            if(sorting==1)
+            {
+                if(j<=i) cout<<"* ";
+                else 
+                {
+                    cout<<endl;
+                    break;
+                }
+            }
+            else if(sorting==2)
+            {
+                if(j<i) cout<<"  ";
+                else 
+                {
+                    cout<<"* ";
+                }
+            }
+            else if(sorting==3)
+            {
+                
+                if(i+j>=dimension-1) cout<<"* ";
+                else 
+                {
+                    cout<<"  ";
+                }  
+            }
+            else
+            {
+                if(i+j<=dimension-1) cout<<"* ";
+                else break;
+            }
+                                  
+        }
+        if (sorting>=2)cout<<endl; 
+    }
+}

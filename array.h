@@ -3,21 +3,8 @@ using namespace std;
 
 enum SortList{ACCENDANT, DECENDANT};
 
-void _89LinearSearch_SearchKeyInArray(float fInputArray[], int nArraySize, const float key)
-{
-    bool bKeyFounded= false;
-    for(int i=0;i<nArraySize;i++)
-    {
-        if(fInputArray[i]==key)
-        {
-            bKeyFounded=true;
-            cout<<"Key founded in Array"<<endl;
-            break;
-        }
-    }
-    if(!bKeyFounded) cout<<"Key not founded"<<endl;
-}
-
+//void SortArray(int nInputArray[], unsigned nArraySize, SortList mList)
+//Sorting Array with Parameter from the Array, the size, and how it should be sorted
 void SortArray(int nInputArray[], unsigned nArraySize, SortList mList)
 {
     int i,j,temp;
@@ -44,9 +31,9 @@ void SortArray(int nInputArray[], unsigned nArraySize, SortList mList)
             {
                 if(nInputArray[i]<nInputArray[j])
                 {
-                    temp  =nInputArray[i];
-                    nInputArray[i]=nInputArray[j];
-                    nInputArray[j]=temp;
+                    temp = nInputArray[i];
+                    nInputArray[i] = nInputArray[j];
+                    nInputArray[j] = temp;
                 }
             }
 	    }
@@ -54,6 +41,26 @@ void SortArray(int nInputArray[], unsigned nArraySize, SortList mList)
     
     
 }
+
+//void _89LinearSearch_SearchKeyInArray(float fInputArray[], int nArraySize, const float key)
+//with this method the System will 
+//search the Key in the Array from the beginning to 
+//end of the Array until it found the Key
+void _89LinearSearch_SearchKeyInArray(float fInputArray[], int nArraySize, const float key)
+{
+    bool bKeyFounded= false;
+    for(int i=0;i<nArraySize;i++)
+    {
+        if(fInputArray[i]==key)
+        {
+            bKeyFounded=true;
+            cout<<"Key founded in Array at Element ["<<i<<"]"<<endl;
+            break;
+        }
+    }
+    if(!bKeyFounded) cout<<"Key not founded"<<endl;
+}
+
 
 void _90BinarySearch(int nInputArray[], int nArraySize, const int key)
 {
