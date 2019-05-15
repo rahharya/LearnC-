@@ -4,6 +4,18 @@
 
 using namespace std;
 
+void Display()
+{
+    cout<<"Funktion executed: Hallo"<<endl;
+}
+
+int Max(int x, int y){
+    return x>y?x:y;
+}
+int Min(int x, int y){
+    return x<y?x:y;
+}
+
 int main(void)
 {
     //103. Pointer Introduction
@@ -67,6 +79,33 @@ int main(void)
         cout<<"Adresse of B[4] : "<<pBlast<<endl;
         cout<<"Value of B[4]   : "<<*pBlast<<endl;
         cout<<endl;
+
+
+    cout<<"--=Reference=--"<<endl<<endl;
+        //Referencing mean that it will be create another ilias for the variable
+        // j have the value of 10
+        // rk have the same Adress with j, so automaticly rk also have the value of 10
+        // if value from one variable changed that it will be also changed for both of the variable
+        int j = 10;
+        int &rk = j;
+        cout <<"Start         --> j= "<<&j<<":"<<j<<" |rk= "<<&rk<<":"<<rk<<endl;
+        j+=1;
+        cout <<"After (j+=1)  --> j= "<<&j<<":"<<j<<" |rk= "<<&rk<<":"<<rk<<endl;
+        rk+=2;
+        cout <<"After (rk+=2) --> j= "<<&j<<":"<<j<<" |rk= "<<&rk<<":"<<rk<<endl;
+        cout<<endl<<endl;
+    cout<<"--=Funktion Pointer=--"<<endl<<endl;
+        void (*pDisplay)();                                 //<-- Declaration
+        pDisplay=Display;                                   //<-- Initialisiation
+        cout<<"Adress of the Display "<<pDisplay<<endl;
+        (*pDisplay)();                                      //<-- Call
+        cout<<endl;
+
+        int (*pMaxMin)(int,int);
+        pMaxMin=Max;
+        cout<<"Max is called "<<(*pMaxMin)(10,5)<<endl;
+        pMaxMin=Min;
+        cout<<"Min is called with the same Pointer different Value "<<(*pMaxMin)(10,5)<<endl;
 
     cout<<"---==Heap Memory Allocation==---"<<endl<<endl;
 
@@ -141,7 +180,6 @@ int main(void)
                 }          */
 
 
-    
     system("PAUSE");
     return 0;
 
