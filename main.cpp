@@ -3,35 +3,7 @@
 #include <math.h>
 
 using namespace std;
-int _CE30ReversingNumber(int n)
-{
-    int output=0;
-    do
-    {
-        int r=n%10;
-        n/=10;
-        output=output*10+r;
-    } while (n>0);    
-    //cout<<output<<endl;    
-    return output;
-}
 
-void _CE31IsPalindrome(int n)
-{
-    int output = _CE30ReversingNumber(n);
-    if(n==output) cout<<n<<" palindrome"<<endl;
-    else cout<<n<< " not a palindrome"<<endl;
-}
-
-void _81GreatestCommonDivider(int a, int b)
-{
-    while(a!=b)
-    {
-        if(a>b) a-=b;
-        else b-=a;
-    }
-    cout<<"Greatest Common Divider is "<<a<<endl;
-}
 
 void _85C11NewFeatureWithAuto()
 {
@@ -59,21 +31,7 @@ void _85C11NewFeatureWithAuto()
 
 int main(void)
 {
-    //CE30 and CE31
-    /*
-        int nNumber;
-        cout<<"Enter n: ";
-        cin>>nNumber;
-        _CE31IsPalindrome(nNumber);
-    */
-    //81
-    int na,nb;
-    _85C11NewFeatureWithAuto();
-    start:
-    
-    // cout<<"Enter a and b: "; cin>>na>>nb; _81GreatestCommonDivider(na,nb); cout<<endl;
-    
-    goto start;
+    cout<<"Hello World"<<endl;
     system("PAUSE");
     return 0;
 }
