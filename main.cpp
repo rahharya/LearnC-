@@ -84,45 +84,78 @@ T Max(T x, T y)
         *pA = *pB;    // Stack -> Swap -> a=&valB, b=&valB, temp=valA;
         *pB = temp;   // Stack -> Swap -> a=&valB, *valB=valA, temp=valA;
         cout<<"    Pass by Add|     SWAP after: a = "<<*pA<<" b = "<<*pB<<endl;
-                    // It wont change the Parameter Value in Main
-                    // It will only change the Parameter in Swap Funktion
+
     }
 //CALL BY REFERENZ
-    void SwapByRef(int &a, int &b)
+    void SwapByRef(int &a, int &b) // when using Call by Referenz it will also called inLine Funktion
     {
-                    // Stack -> main -> valA = 10, valB=33;
-                    // Stack -> Swap -> a=valA, b=valB, temp;
+        // It wont create another Funktion in Stack with name SwapByRef
+        // But it will be generated also in Main 
+                    // Stack -> main -> a = valA = 33, b = valB = 10, temp;
         cout<<"    Pass by Ref|     SWAP before: a = "<<a<<" b = "<<b<<endl;
         int temp;
-        temp = a;   // Stack -> Swap -> a=valA, b=valB, temp=valA;
-        a = b;      // Stack -> Swap -> a=valB, b=valB, temp=valA;
-        b = temp;   // Stack -> Swap -> a=valB, b=valA, temp=valA;
+        temp = a;   // Stack -> main -> a = valA = 33, b = valB = 10, temp = a = 33;
+        a = b;      // Stack -> main -> a = valA = 10, b = valB = 10, temp = a = 33;
+        b = temp;   // Stack -> main -> a = valA = 10, b = valB = 33, temp = a = 33;
         cout<<"    Pass by Ref|     SWAP after: a = "<<a<<" b = "<<b<<endl;
-                    // It wont change the Parameter Value in Main
-                    // It will only change the Parameter in Swap Funktion
+
     }
 #pragma endregion
+#pragma region Return by Address and Referenz
+//RETURN BY ADDRESS
+    int* CreateHeapArray(int ArraySize)
+    {
+        int *pArray = new int[ArraySize];   // Creating pointer that pointing to a integer Array that located in Heap with size of ArraySize
+        for(int i=0; i<ArraySize;i++)
+        {
+            pArray[i]=2*i+1;                  // Asign Value to Array
+        }
+        cout<<"     Ret by Add| pArray from CreateHeapArray pointing to : "<<pArray<<endl;
+        return pArray;                      // Returning the Pointer with Address of Heap Array
+    }
 
+//RETURN BY REFERENZ
+    int& RetValue(int &a)
+    {
+                    // Stack -> main -> a = nVal = 10
+        a=a+5;      // Stack -> main -> a = nVal = 10+5
+        return a;   // This mean that RetValue will act like a variable a = nVal, so it can be assigned with Value;
+    }
+#pragma endregion
 int main(void)
 {
     cout<<"Funtion Overloading and Default Argument"<<endl;
         cout<<"     F Ovrload 2 Arg int  : "<<Add(10,34)<<endl;
         cout<<"     F Ovrload 3 Arg int  : "<<Add(10,34,20)<<endl;
         cout<<"     F Ovrload 2 Arg float: "<<Add(10.5f,5.23f)<<endl;
+        cout<<endl;
     cout<<"Function Template"<<endl;
         cout<<"     F Template| int Max  : "<<Max(10,5)<<endl;
         cout<<"     F Template| float Max: "<<Max(10.5f,5.23f)<<endl;
+        cout<<endl;
     cout<<"Parameter Passing"<<endl;
         int valA=10, valB=33;
         cout<<"    Pass by Val| MAIN before: valA = "<<valA<<" valB = "<<valB<<endl;
         Swap(valA,valB);
         cout<<"    Pass by Val| MAIN after : valA = "<<valA<<" valB = "<<valB<<endl;
+        cout<<endl;
         cout<<"    Pass by Add| MAIN before: valA = "<<valA<<" valB = "<<valB<<endl;
         Swap(&valA,&valB);
         cout<<"    Pass by Add| MAIN after : valA = "<<valA<<" valB = "<<valB<<endl;
+        cout<<endl;
         cout<<"    Pass by Ref| MAIN before: valA = "<<valA<<" valB = "<<valB<<endl;
         SwapByRef(valA,valB);
         cout<<"    Pass by Ref| MAIN after : valA = "<<valA<<" valB = "<<valB<<endl;
+        cout<<endl;
+    cout<<"Return Funktion"<<endl;
+        int *pInt = CreateHeapArray(4);
+        cout<<"     Ret by Add| pInt from main pointing to : "<<pInt<<endl;
+        cout<<"     Ret by Add| pInt = {"<<*pInt<<","<<pInt[1]<<","<<*(pInt+2)<<","<<pInt[3]<<"}"<<endl;
+        int nVal=10;
+        cout<<"     Ret by Ref| Before | nVal = a = "<<nVal<<endl;
+        cout<<"     Ret by Ref| After  | nVal = a = RetValue(nVal) = "<<RetValue(nVal)<<endl;
+        RetValue(nVal)=45;
+        cout<<"     Ret by Ref| After  | RetValue(nVal) with Value = "<<RetValue(nVal)<<endl;
     system("PAUSE");
     return 0;
 }
