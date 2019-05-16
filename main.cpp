@@ -122,8 +122,67 @@ T Max(T x, T y)
         return a;   // This mean that RetValue will act like a variable a = nVal, so it can be assigned with Value;
     }
 #pragma endregion
+#pragma region Global, Static Variable, and Scooping Rule
+//GLOBAL VARIABEL
+    int scope = 10;
+
+//STATIC VARIABEL
+    // Static Variabel will always be in the Funktions just like Global Variabel
+    // The only different is that Static Variabel will only accesable by the Funktion where it belong and not to another funktion like global
+    // Static variable is globale variable only for the parent Funktion/Element
+
+    void ExampleStaticVariabel()
+    {
+        static int staticVariabel = 0; // by first call it will be initialised, and for the next call it won't
+        int lokalVariabel = 5;
+        staticVariabel++;
+        cout<<"        Static Var| staticVar = "<<staticVariabel<<" | lokalVar = "<<lokalVariabel<<endl;
+    }
+#pragma endregion
+#pragma region Recursive Function
+void RekursiveFunction(int n)
+{
+    static int called=0;
+    if(n>0)
+    {
+        called++;
+        cout<<"Rekursive called "<<called<<" times | RekursiveFunc["<<n<<"] = "<<n<<endl;
+        RekursiveFunction(n-1);
+    }
+}
+
+int Fibonaci(int n)
+{
+    int f0=0;
+    int f1=1;
+    int fn=0;
+        if(n==0) fn=fn+f0;
+        else if(n==1) fn=fn+f1+f0;
+        else fn=Fibonaci(n-1)+Fibonaci(n-2);
+    return fn;
+}
+#pragma endregion
 int main(void)
 {
+    
+    cout<<"Global & Local Variabel, Scooping Rule"<<endl;
+        //Code and Global Variable are saved in main
+        int scope=20;
+        {
+            int scope=30;
+            cout<<"     Scooping Rule|scope inside:"<<scope<<endl;
+        }
+        cout<<"     Scooping Rule|scope main  :"<<scope<<endl;
+        cout<<"     Scooping Rule|scope global:"<<::scope<<endl;
+        cout<<endl;
+
+    cout<<"Static Variable"<<endl;
+        ExampleStaticVariabel();
+        ExampleStaticVariabel();
+        ExampleStaticVariabel();
+        ExampleStaticVariabel();
+        cout<<endl;
+
     cout<<"Funtion Overloading and Default Argument"<<endl;
         cout<<"     F Ovrload 2 Arg int  : "<<Add(10,34)<<endl;
         cout<<"     F Ovrload 3 Arg int  : "<<Add(10,34,20)<<endl;
@@ -156,6 +215,9 @@ int main(void)
         cout<<"     Ret by Ref| After  | nVal = a = RetValue(nVal) = "<<RetValue(nVal)<<endl;
         RetValue(nVal)=45;
         cout<<"     Ret by Ref| After  | RetValue(nVal) with Value = "<<RetValue(nVal)<<endl;
+    cout<<"Rekursive Function"<<endl;
+        RekursiveFunction(5);
+        cout<<"Fibonaci[9] : "<<Fibonaci(9)<<endl;
     system("PAUSE");
     return 0;
 }
