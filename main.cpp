@@ -4,8 +4,9 @@
 #include "class.h"
 using namespace std;
 
-int main(void)
-{
+//SECTION 11 INTRODUCTION TO OOPS
+    void IntroductiontoOOPS()
+    {
     //141. Demo - Class in C++;
         Rectangle r1; // Object Rectangle created in Stack in this sense are the Datamembers saved
         r1.length=10; r1.width=5;
@@ -40,6 +41,13 @@ int main(void)
         cout<<"perimeter of pHeapRect2  :"<<pHeapRect2->perimeter()<<endl<<endl;
         pHeapRect2->inLineFunction();
         pHeapRect2->nonInLineFunction();
+    }
+
+
+int main(void)
+{
+    //IntroductiontoOOPS(); // UNCOMMENT TO USE SECTION 11
+    
     system("PAUSE");
     return 0;
 }

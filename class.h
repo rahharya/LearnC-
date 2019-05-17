@@ -3,8 +3,8 @@ using namespace std;
 
 class Rectangle
 {
-    //only datamember will occupied memory in Stack Section and Operator wont
-    public: 
+    public:
+    //only datamember will occupied memory in Stack Section and Operator wont 
         int length;
         int width;
 
