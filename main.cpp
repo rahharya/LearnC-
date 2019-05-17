@@ -38,6 +38,8 @@ int main(void)
         cout<<"perimeter of r3 :"<<r3.perimeter()<<endl<<endl;
         cout<<"Area of pHeapRect2       :"<<pHeapRect2->area()<<endl;
         cout<<"perimeter of pHeapRect2  :"<<pHeapRect2->perimeter()<<endl<<endl;
+        pHeapRect2->inLineFunction();
+        pHeapRect2->nonInLineFunction();
     system("PAUSE");
     return 0;
 }
