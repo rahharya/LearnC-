@@ -2,6 +2,7 @@
 #include <string>
 #include <math.h>
 #include "class.h"
+#include "inheritance.h"
 using namespace std;
 
 int main(void)
@@ -40,6 +41,9 @@ int main(void)
         cout<<"perimeter of pHeapRect2  :"<<pHeapRect2->perimeter()<<endl<<endl;
         pHeapRect2->inLineFunction();
         pHeapRect2->nonInLineFunction();
+    //166. Inheritance Example
+        Cube c1(10,5,3);
+        cout<<"c1 = "<<c1<<endl;
     system("PAUSE");
     return 0;
 }
