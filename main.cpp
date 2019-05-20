@@ -88,7 +88,8 @@ int main(void)
         Car *car2 = new Innova();
         car2->Start(); // This will call Start Funktion from Parent Class
         car2->Stop();  // This will call Stop Funktion from Child Class because Stop Funktion in Parent is virtual
-
+        delete car2;
+        car2=nullptr;
     system("PAUSE");
     return 0;
 }
