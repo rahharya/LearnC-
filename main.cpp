@@ -5,9 +5,10 @@
 #include "inheritance.h"
 #include "inheritance2.h"
 #include "employeparent.h"
+#include "car.h"
 using namespace std;
 
-int main(void)
+void Section11()
 {
     //141. Demo - Class in C++;
         Rectangle r1; // Object Rectangle created in Stack in this sense are the Datamembers saved
@@ -43,15 +44,51 @@ int main(void)
         cout<<"perimeter of pHeapRect2  :"<<pHeapRect2->perimeter()<<endl<<endl;
         pHeapRect2->inLineFunction();
         pHeapRect2->nonInLineFunction();
+        delete pHeapRect2;
+        pHeapRect2=NULL;
+} 
+
+void Section12()
+{
     //166. Inheritance Example
         Cube c1(10,5,3);
         cout<<"c1 = "<<c1<<endl;
         cout<<endl;
+}
+
+void Section1314()
+{
     //179. Student Exercise #11 Inheritance Employee
-        FullTimeEmployee Arya("Arya",1,3880);
-        PartTimeEmployee Andre("Andre",2,28);
-        cout<<Arya<<endl;
-        cout<<Andre<<endl;
+    
+    // Parent Class Pointer pointing at ChildClass is like we take the Employee-Feature from FullTimeEmployee-Feature
+    // that means the Element that can be accessed is only Element from ParentClass
+    // it's just like take one special feature of an Auto, for example Auto have so many feature like Tire, Door, Multimedia
+    // then it s like "i want to look specificaly at Multimedia Class from Car Class"
+    // therefore it cant worked otherwise : "i want to look at feature 'Car' from Tire"
+    Employee *pEmploye;
+    pEmploye = new FullTimeEmployee("Arya",1,3880);
+    cout<<"Employe Name is "<<pEmploye->getName()<<" and his/her Id is "<<pEmploye->getEmployeId()<<endl;
+    //pEmploye->getSalary() // class "Employee" has no member "getSalary"
+    // we also cant pointing at ParentClass using ChildClass Pointer because ParentClass didnt have some Feature that ChildClass has
+        // FullTimeEmployee *pEmployee = new Employe("Arya",1);    // <== ERROR
+    
+    PartTimeEmployee Andre("Andre",2,28);
+    
+    cout<<Andre<<endl;
+}
+
+int main(void)
+{
+    // 185. Function Overiding
+        Car car1;
+        Innova innova1;
+        car1.Start();
+        innova1.Start();
+    // 186. Virtual Functions
+        Car *car2 = new Innova();
+        car2->Start(); // This will call Start Funktion from Parent Class
+        car2->Stop();  // This will call Stop Funktion from Child Class because Stop Funktion in Parent is virtual
+
     system("PAUSE");
     return 0;
 }
