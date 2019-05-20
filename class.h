@@ -4,6 +4,14 @@
 #include <iostream>
 using namespace std;
 
+//Abstract Class for Polymorphysm
+class Shape
+{
+    public:
+        virtual int area()=0;
+        virtual int perimeter()=0;
+};
+
 class Rectangle
 {
     //only datamember will occupied memory in Stack Section and Operator wont
@@ -21,7 +29,7 @@ class Rectangle
         }
 };
 
-class HideRectangle
+class HideRectangle:public Shape
 {
     //only datamember will occupied memory in Stack Section and Operator wont
     private: // directly write and write aren't permissible
@@ -135,6 +143,36 @@ bool HideRectangle::isSquare()
 HideRectangle::~HideRectangle()
 {
 
+}
+
+class Circle:public Shape
+{
+    private:
+        float radius;
+        float diameter;
+    public:
+        Circle(float radius);
+        float GetDiameter();
+        int area();
+        int perimeter();
+
+}; 
+
+Circle::Circle(float radius){
+    this->radius=radius;
+    this->diameter=2*radius;
+}
+
+float Circle::GetDiameter(){
+    return diameter;
+}
+
+int Circle::area(){
+    return(22*radius*radius/7);
+}
+
+int Circle::perimeter(){
+    return(22*diameter/7);
 }
 
 #endif

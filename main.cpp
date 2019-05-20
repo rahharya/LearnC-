@@ -47,7 +47,6 @@ void Section11()
         delete pHeapRect2;
         pHeapRect2=NULL;
 } 
-
 void Section12()
 {
     //166. Inheritance Example
@@ -55,7 +54,6 @@ void Section12()
         cout<<"c1 = "<<c1<<endl;
         cout<<endl;
 }
-
 void Section1314()
 {
     //179. Student Exercise #11 Inheritance Employee
@@ -76,20 +74,35 @@ void Section1314()
     
     cout<<Andre<<endl;
 }
-
-int main(void)
+void Section15()
 {
     // 185. Function Overiding
-        Car car1;
+        //Car car1; //object of abstract class type "Car" is not allowed: -- function "Car::Start" is a pure virtual function -- function "Car::Stop" is a pure virtual function
+            // Abstract Class, we can't have Object from Abstract Classes, only pointer deklaration
+            // If a Base Class (here Car) have Functions that all concrete is, than it is reusability Inheritance
+            //                                 some concrete and some pure virtual funktion, then it's for reusability aswell polymorphism. This classes called Abstract Class
+            //                                 only pure virtual Functions, then it's only for Polymophism. Such classes called Interface Abstract Class
+
+
         Innova innova1;
-        car1.Start();
+        //car1.Start();
         innova1.Start();
     // 186. Virtual Functions
         Car *car2 = new Innova();
         car2->Start(); // This will call Start Funktion from Parent Class
         car2->Stop();  // This will call Stop Funktion from Child Class because Stop Funktion in Parent is virtual
-        delete car2;
-        car2=nullptr;
+        car2= new Swift();
+        car2->Start();
+        HideRectangle ChildRect(5,3);
+        Shape *pRect = &ChildRect;
+        cout<<pRect->area()<<endl;
+        Shape *pCircle = new Circle(7);
+        cout<<pCircle->perimeter()<<endl;
+}
+
+int main(void)
+{
+
     system("PAUSE");
     return 0;
 }
