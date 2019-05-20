@@ -1,2 +1,3 @@
 *.ipch
 .vscode/ipch/9843f438cc1395a0/mmap_address.bin
+*.bin

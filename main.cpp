@@ -39,17 +39,16 @@ void _85_C11_NewFeatureWithAuto()
     }
     cout<<"Max       : "<<fmax<<endl;
 }
-
-int main(void)
+void Section05_CppBasic()
 {
-    //CE30 and CE31
-    /*
-        int nNumber;
-        cout<<"Enter n: ";
-        cin>>nNumber;
-        _CE31IsPalindrome(nNumber);
-    */
+    int nNumber;
+    cout<<"Enter n: ";
+    cin>>nNumber;
+    _CE31IsPalindrome(nNumber);
+}
 
+void Section08_Array()
+{
     _85_C11_NewFeatureWithAuto(); cout<<endl;
 
     float _fArray[]={3,6.56f,7.345f,6.123f,8.78f,3.56f,1.456f}; //7Element
@@ -69,12 +68,11 @@ int main(void)
     //Drawing Pattern
     _94DrawingPattern1();
     _95DrawingPattern2(4,7);
+}
 
-    start:
+int main(void)
+{
     
-    // cout<<"Enter a and b: "; cin>>na>>nb; _81GreatestCommonDivider(na,nb); cout<<endl;
-    
-    goto start;
     return 0;
 }
 
