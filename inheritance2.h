@@ -55,12 +55,23 @@ class PublicGrandChild2: public ProtectedChild{
 };
 
 class PrivateChild: private Parent{
+    // All protected and public Element from Parent become a private Element in PrivateChild
     public:
         void ChildAccesData()
         {
-            //a=1;
-            b=2;
-            c=3;
+            //a=1;       // member "Parent::a" (declared at line 5) is inaccessible (private)
+            b=2;         // protected in Parent -> private in Child
+            c=3;         // public in Parent    -> private in Child
+        }
+};
+
+class PublicGrandChild3: public PrivateChild{
+    public:
+        void GrandChildAccesData()
+        {
+            //a=1;        // member "Parent::a" (declared at line 5) is inaccessible (private)
+            //b=2;        // member "Parent::b" (declared at line 6) is inaccessible (private) because of PrivateChild private-Inheritance
+            //c=3;        // member "Parent::c" (declared at line 7) is inaccessible (private) because of PrivateChild private-Inheritance
         }
 };
 

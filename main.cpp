@@ -4,6 +4,7 @@
 #include "class.h"
 #include "inheritance.h"
 #include "inheritance2.h"
+#include "employeparent.h"
 using namespace std;
 
 int main(void)
@@ -45,6 +46,12 @@ int main(void)
     //166. Inheritance Example
         Cube c1(10,5,3);
         cout<<"c1 = "<<c1<<endl;
+        cout<<endl;
+    //179. Student Exercise #11 Inheritance Employee
+        FullTimeEmployee Arya("Arya",1,3880);
+        PartTimeEmployee Andre("Andre",2,28);
+        cout<<Arya<<endl;
+        cout<<Andre<<endl;
     system("PAUSE");
     return 0;
 }
