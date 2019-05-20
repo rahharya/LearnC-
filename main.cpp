@@ -8,7 +8,6 @@ void Display()
 {
     cout<<"Funktion executed: Hallo"<<endl;
 }
-
 int Max(int x, int y){
     return x>y?x:y;
 }
@@ -16,7 +15,7 @@ int Min(int x, int y){
     return x<y?x:y;
 }
 
-int main(void)
+void Section09_Pointer()
 {
     //103. Pointer Introduction
     cout<<"---==Pointer Introduction==---"<<endl<<endl;
@@ -178,10 +177,12 @@ int main(void)
                     hallo(p);
                     cout<<*p;  <-- ERROR because the value is already deleted trought Method 'hallo'
                 }          */
+}
 
+int main(void)
+{
 
     system("PAUSE");
     return 0;
-
 }
 
