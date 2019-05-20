@@ -3,6 +3,7 @@
 #include <math.h>
 #include "class.h"
 #include "inheritance.h"
+#include "inheritance2.h"
 using namespace std;
 
 int main(void)

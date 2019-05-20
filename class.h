@@ -53,8 +53,9 @@ class HideRectangle
         int perimeter();
         void inLineFunction() {cout<<"InLine called"<<endl;}
         void nonInLineFunction();
+        friend ostream & operator<<(ostream &os, HideRectangle &rec);
     //Equery
-        int isSquare();
+        bool isSquare();
     //Destructor
         ~HideRectangle();
 };
@@ -118,9 +119,18 @@ int HideRectangle::perimeter(){
 void HideRectangle::nonInLineFunction(){
     cout<<"nonInLine called"<<endl;
 }
-int HideRectangle::isSquare()
+ostream & operator<<(ostream &os, HideRectangle &rec)
 {
-    return 0;
+    os<<"l: "<<rec.getLength()<<" w: "<<rec.getWidth()<<" | A: "<<rec.area();
+    return os;
+}
+bool HideRectangle::isSquare()
+{
+    if (length==width)
+    {
+        return true;
+    }
+    else return false;
 }
 HideRectangle::~HideRectangle()
 {
