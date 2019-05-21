@@ -1,7 +1,8 @@
-#include <iostream>
-#include "class.h"
+
 #ifndef EMPLOYE_H
 #define EMPLOYE_H
+#include <iostream>
+#include "class.h"
 
 class Employee{
     private:

@@ -23,7 +23,14 @@ class Innova: public Car{
         virtual void Honk(){
             cout<<"Innova honked"<<endl;
         }
+        static int GetPrice(){
+            return price;
+        }
+    private:
+        static int price;
 };
+
+int Innova::price = 4000;
 
 class Swift: public Car{
     public:
@@ -37,4 +44,7 @@ class Swift: public Car{
         virtual void Honk(){
             cout<<"Swift honked"<<endl;
         }
+        static int price;
 };
+
+int Swift::price = 3800;

@@ -5,10 +5,12 @@
 #include "inheritance.h"
 #include "inheritance2.h"
 #include "employeparent.h"
-#include "car.h"
+#include "sec15\car.h"
+#include "sec16\friend.h"
+#include "sec16\inner_nested.h"
 using namespace std;
 
-void Section11()
+void Section11_Object_Oriented_Programming()
 {
     //141. Demo - Class in C++;
         Rectangle r1; // Object Rectangle created in Stack in this sense are the Datamembers saved
@@ -47,14 +49,14 @@ void Section11()
         delete pHeapRect2;
         pHeapRect2=NULL;
 } 
-void Section12()
+void Section12_Operation_Overloading()
 {
     //166. Inheritance Example
         Cube c1(10,5,3);
         cout<<"c1 = "<<c1<<endl;
         cout<<endl;
 }
-void Section1314()
+void Section13_14_Inheritance()
 {
     //179. Student Exercise #11 Inheritance Employee
     
@@ -74,7 +76,7 @@ void Section1314()
     
     cout<<Andre<<endl;
 }
-void Section15()
+void Section15_Polymorphism()
 {
     // 185. Function Overiding
         //Car car1; //object of abstract class type "Car" is not allowed: -- function "Car::Start" is a pure virtual function -- function "Car::Stop" is a pure virtual function
@@ -98,12 +100,48 @@ void Section15()
         cout<<pRect->area()<<endl;
         Shape *pCircle = new Circle(7);
         cout<<pCircle->perimeter()<<endl;
+        cout<<Innova::GetPrice();
+        
+}
+
+void Section16_Friend_and_Static_Members_or_Inner_Classe()
+{
+    //194. Friend Function and Classes
+        Your y1;
+        y1.fun(); // Initialisieren the value of Mine Classes that inside Your Classes
+        int a,b,c;
+        y1.getA(a);
+        y1.getB(b);
+        y1.getC(c);
+        cout<<"Mine.count(static var) = "<<Mine::count<<" | a = "<<a<<" | b = "<<b<<" | c = "<<c<<endl;
+        Your y2;
+        cout<<"Mine.count(static var) = "<<y2.m.count<<" | a = "<<a<<" | b = "<<b<<" | c = "<<c<<endl;
+        Mine m1;
+        cout<<"Mine.count(static var) = "<<Mine::getCount()<<" | a = "<<a<<" | b = "<<b<<" | c = "<<c<<endl;
+    //200. Inner/ Nested Class
+        Outer out1;
+        out1.fun();
+        LinkedList list1;
+        int input;
+        start:
+        cout<<"Enter Input : "; cin>>input;
+        if(input==0) goto stop;
+        else
+        {
+            list1.AddNode(input);
+            goto start;
+        }      
+        stop:
+        list1.Display();
 }
 
 int main(void)
 {
+    //Section15_Polymorphism();
+    //Section16_Friend_and_Static_Members_or_Inner_Classe();
 
     system("PAUSE");
     return 0;
 }
 
+    
