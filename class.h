@@ -1,5 +1,16 @@
+#ifndef CLASS_H
+#define CLASS_H
+
 #include <iostream>
 using namespace std;
+
+//Abstract Class for Polymorphysm
+class Shape
+{
+    public:
+        virtual int area()=0;
+        virtual int perimeter()=0;
+};
 
 class Rectangle
 {
@@ -18,7 +29,7 @@ class Rectangle
         }
 };
 
-class HideRectangle
+class HideRectangle:public Shape
 {
     //only datamember will occupied memory in Stack Section and Operator wont
     private: // directly write and write aren't permissible
@@ -50,8 +61,9 @@ class HideRectangle
         int perimeter();
         void inLineFunction() {cout<<"InLine called"<<endl;}
         void nonInLineFunction();
+        friend ostream & operator<<(ostream &os, HideRectangle &rec);
     //Equery
-        int isSquare();
+        bool isSquare();
     //Destructor
         ~HideRectangle();
 };
@@ -115,11 +127,52 @@ int HideRectangle::perimeter(){
 void HideRectangle::nonInLineFunction(){
     cout<<"nonInLine called"<<endl;
 }
-int HideRectangle::isSquare()
+ostream & operator<<(ostream &os, HideRectangle &rec)
 {
-    return 0;
+    os<<"l: "<<rec.getLength()<<" w: "<<rec.getWidth()<<" | A: "<<rec.area();
+    return os;
+}
+bool HideRectangle::isSquare()
+{
+    if (length==width)
+    {
+        return true;
+    }
+    else return false;
 }
 HideRectangle::~HideRectangle()
 {
 
 }
+
+class Circle:public Shape
+{
+    private:
+        float radius;
+        float diameter;
+    public:
+        Circle(float radius);
+        float GetDiameter();
+        int area();
+        int perimeter();
+
+}; 
+
+Circle::Circle(float radius){
+    this->radius=radius;
+    this->diameter=2*radius;
+}
+
+float Circle::GetDiameter(){
+    return diameter;
+}
+
+int Circle::area(){
+    return(22*radius*radius/7);
+}
+
+int Circle::perimeter(){
+    return(22*diameter/7);
+}
+
+#endif
