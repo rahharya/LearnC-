@@ -181,7 +181,29 @@ void Section09_Pointer()
 
 int main(void)
 {
+    int x=10,y=20,z=30;
+    //LOCK ON VALUE
+        // it's not the pointer that constant but the value that pointer pointing at is constant
+        const int *ConstVal=&x; 
+        // *ValuePtr+=1; error: increment of read-only location '* ValuePtr'
+        cout<<*ConstVal<<endl; // showing the constant value of x
+        ConstVal=&y; // change the value of pointer to address from y
+        cout<<*ConstVal<<endl;
+        y++; // y is not constant, therefor we can change its value
+        cout<<*ConstVal<<endl;
 
+    //LOCK ON POINTER
+        int *const ConstPtr = &z; // this mean that the pointer value is constant not the Value that pointer pointing to
+        // ConstPtr=&x; << ERROR
+        *ConstPtr+=1;
+        cout<<*ConstPtr<<endl;
+
+    //LOCK ON VALUE AND POINTER
+        int w=40;
+        const int *const ConstPtrAndValue = &w;
+        // ConstPtrAndValue=&x; //<< ERROR
+        // *ConstPtrAndValue+=1; //<< ERROR
+        cout<<*ConstPtrAndValue<<endl;
     system("PAUSE");
     return 0;
 }
