@@ -11,6 +11,7 @@
 #include "sec15\car.h"
 #include "sec16\friend.h"
 #include "sec16\inner_nested.h"
+#include "sec17\exception.h"
 using namespace std;
 
 void Section10_Function()
@@ -223,17 +224,48 @@ void Section16_Friend_and_Static_Members_or_Inner_Classe()
 
 void Section17_Exception_Handling(){
     int a = 10, b, c;
-    start:
+    
     cout<<"(a/b) | a = "<<a<<" | Enter value of b : "; cin>>b;
     try{
-        if(b==0) throw 1010;
-        c=a/b;
+        // if(b==0) throw 1010;
+        // c=a/b;
+
+        // throw and catch between Functions
+        c= Division(a,b);
         cout<<"(a/b) = "<<c<<" | a = "<<a<<" | b = "<<b<<endl;
     } 
-    catch(int e)
+    catch(MyException e)
     {
-       cout<<"Division by Zero | ERROR CODE : "<<e<<endl;
+       cout<<"Division by Zero | MyEception : "<<endl;
     }
+    catch (int e)
+    {
+       cout<<"Division by Zero | ERROR CODE : int "<<e<<endl;
+    }
+    catch (double e)
+    {
+       cout<<"Division by Zero | ERROR CODE : dbl "<<e<<endl;
+    }
+    catch (...) // catch all handler must come last
+    {
+       cout<<"Division by Zero | ERROR CODE : all "<<endl;
+    }
+
+    Stack<int> cStack(5); int input;
+    start:
+    cout<<"Push(1) or Pop(2) : "; cin>>input;
+    if(input==1) 
+    {
+        cout<<"Push int: "; 
+        cin>>input; 
+        cStack.Push(input);
+    }
+    else if (input==2)
+    {
+        cStack.Pop(input);
+        cout<<"Pull int: "<<input<<endl;
+    }
+    cStack.Display();
     goto start;
 };
 

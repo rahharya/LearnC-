@@ -1,4 +1,4 @@
-
+#include "sec17\exception.h"
 #include<iostream>
 using namespace std;
 
@@ -29,6 +29,16 @@ T Max(T x, T y)
 {
     if(x>y) return x;
     else return y;
+}
+
+template<class T>
+T Division(T x, T y)
+{
+    if(y==0) throw MyException();
+    if(y==1) throw 1;
+    if(y==2) throw 2.3;
+    if(y==3) throw "ERROR";
+    return x/y;
 }
 #pragma endregion
 #pragma region Parameter Passing
