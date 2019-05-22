@@ -221,14 +221,30 @@ void Section16_Friend_and_Static_Members_or_Inner_Classe()
         list1.Display();
 }
 
+void Section17_Exception_Handling(){
+    int a = 10, b, c;
+    start:
+    cout<<"(a/b) | a = "<<a<<" | Enter value of b : "; cin>>b;
+    try{
+        if(b==0) throw 1010;
+        c=a/b;
+        cout<<"(a/b) = "<<c<<" | a = "<<a<<" | b = "<<b<<endl;
+    } 
+    catch(int e)
+    {
+       cout<<"Division by Zero | ERROR CODE : "<<e<<endl;
+    }
+    goto start;
+};
+
 int main(void)
 {
     // Section11_IntroductiontoOOPS();
     // Section12_Operator_Overloading();
-    Section13_14_Inheritance();
+    // Section13_14_Inheritance();
     // Section15_Polymorphism();
     // Section16_Friend_and_Static_Members_or_Inner_Classe();
-
+    Section17_Exception_Handling();
     system("PAUSE");
     return 0;
 }
