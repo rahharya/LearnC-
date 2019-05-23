@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <math.h>
+#include <fstream>
 #include "class.h"
 #include "complex.h"
 #include "rational.h"
@@ -27,7 +28,6 @@ namespace FIRST
         cout<<"First"<<endl;
     }
 }
-
 namespace SECOND
 {
     void func()
@@ -35,8 +35,6 @@ namespace SECOND
         cout<<"Second"<<endl;
     }
 }
-
-
 void Section09_Pointer()
 {
     //103. Pointer Introduction
@@ -545,9 +543,32 @@ void Section20_Destructor_and_Virtual_Destructors()
         Car *pCar = new Innova();
         delete pCar;
         cout<<endl;
-
-
-
+}
+void Section21_IO_Stream()
+{
+    // Open / Create File to Write
+        //Class ofstream(string FileName)
+        ofstream ofs("My.txt",ios::trunc); 
+    // Writing Something in the File
+        ofs<<"David"<<endl;
+        ofs<<25<<endl;
+        ofs<<"cpp"<<endl;
+    // Close the File
+        ofs.close();
+    // Open File to Reading Purpose
+        ifstream infile;
+        infile.open("My.txt");
+        if(!infile.is_open()) cout<<"File cannot be opened"<<endl;
+        string str;
+        int x;
+        infile>>str;
+        infile>>x;
+        cout<<str<<" "<<x<<endl;
+        if(infile.eof()) // true when end of file
+        {
+            cout<<"End of File reached"<<endl;
+            infile.close();
+        }
 }
 
 int main(void)
@@ -558,7 +579,8 @@ int main(void)
     // Section15_Polymorphism();
     // Section16_Friend_and_Static_Members_or_Inner_Classe();
     // Section19_Constant_Prepocessor_Directives_and_Namespace();
-    Section20_Destructor_and_Virtual_Destructors();
+    // Section20_Destructor_and_Virtual_Destructors();
+    Section21_IO_Stream();
     system("PAUSE");
     return 1;
 }
