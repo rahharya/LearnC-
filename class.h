@@ -10,6 +10,12 @@ class Shape
     public:
         virtual int area()=0;
         virtual int perimeter()=0;
+        Shape(){
+            cout<<"Shape class is created"<<endl;
+        }
+        virtual ~Shape(){
+            cout<<"Shape Class is destroyed"<<endl;
+        }
 };
 
 class Rectangle
@@ -39,6 +45,7 @@ class HideRectangle:public Shape
     //the operator will be saved in Code Section
     public:
     //Constructor
+    // USE: For initialisation Purpose and allocationg resources
         //1. Default Constructor non parameter
             // HideRectangle()
             // {    // It can be optimised with Parameter Constructor with Default Value
@@ -105,10 +112,12 @@ HideRectangle::HideRectangle(HideRectangle &Rect)
     width=Rect.width;
 }
 void HideRectangle::setLength(int length){
+    cout<<"Hide Rectangle Object created"<<endl;
     if(length>=0) this->length=length;
     else this->length=0;
 }
 void HideRectangle::setWidth(int width){
+    cout<<"Hide Rectangle Object created"<<endl;
     if(width>=0) this->width=width;
     else this->width=0;
 }
@@ -144,7 +153,8 @@ bool HideRectangle::isSquare()
 }
 HideRectangle::~HideRectangle()
 {
-
+    //Delocationg Resources
+    cout<<"Hide Rectangle Object created is destroyed"<<endl; 
 }
 
 class Circle:public Shape

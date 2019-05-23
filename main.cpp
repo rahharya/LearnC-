@@ -20,7 +20,7 @@ using namespace std;
     #define SQRT(x) (x*x) // Create funktion
     #define MSG(x) #x // Change the x into string
 
-namespace First
+namespace FIRST
 {
     void func()
     {
@@ -28,7 +28,7 @@ namespace First
     }
 }
 
-namespace Second
+namespace SECOND
 {
     void func()
     {
@@ -373,7 +373,30 @@ void Section15_Polymorphism()
         Shape *pCircle = new Circle(7);
         cout<<pCircle->perimeter()<<endl;
         cout<<Innova::GetPrice();
-}
+        // look at --> Section 20. 222. Virtual Destructor
+        // By Polymorphism it's important to set the Destructor of the Base Class to virtuall
+        // ex:
+            // Car *pCar = new Innova();
+            // ....
+            // delete pCar; // from this funktion the Destructor of Car (Base Class will be deleted)
+            //              // and the Innova (Derived Class) wont be deleted until the program finished
+            // solution: set the Base Destructor to virtual then it will run the Destructor from Derived Class first
+                /*
+                    class Base
+                    {
+                        public:
+                        Base(); // Base Constructor
+                        virtual ~Base();
+                    }
+                    class Derived: public Base
+                    {
+                        public:
+                        Derived();
+                        ~Derived();
+
+                    }
+                */
+}   
 void Section16_Friend_and_Static_Members_or_Inner_Classe()
 {
     //194. Friend Function and Classes
@@ -490,12 +513,43 @@ void Section19_Constant_Prepocessor_Directives_and_Namespace()
         // When there is multiple same name global function we can use namespace to separate the Function
         // ERROR EXAMPLE
         // 1. func(); // There are no func() funktion in the global Function because it is in the namespace
-        First::func();
-
+        FIRST::func(); // Calling func() from namespace FIRST
+        SECOND::func(); // Calling func() from namespace SECOND
+        // When we want to use the same Namespace for whole Program then we can use
+        /*
+            using namespace FIRST;
+            int main(void)
+            {
+                func(); // This func() will be called from namespace FIRST
+            } 
+        */
+}
+void Section20_Destructor_and_Virtual_Destructors()
+{
+    // 220. Destructor
+        Stack<float> DesStack(6); 
+            // Constructor
+            // create a float Array in Heap Memory
+        cout<<"Use Breakpoint for better understanding"<<endl;
+        DesStack.Push(1.23f);
+        DesStack.Push(3.45f);
+        DesStack.Push(6.78f);
+        DesStack.Push(9.01f);
+        DesStack.Push(2.34f);
+        DesStack.Push(5.67f);
+        DesStack.Display();
+        cout<<endl;
+    // 222. Virtual Destructor 
+        // look at Section15_ Polymorphism
+        cout<<"try to delete virtuall in front of Car Destructor to see the difference"<<endl;
+        Car *pCar = new Innova();
+        delete pCar;
+        cout<<endl;
 
 
 
 }
+
 int main(void)
 {
     // Section11_IntroductiontoOOPS();
@@ -503,7 +557,8 @@ int main(void)
     // Section13_14_Inheritance();
     // Section15_Polymorphism();
     // Section16_Friend_and_Static_Members_or_Inner_Classe();
-    Section19_Constant_Prepocessor_Directives_and_Namespace();
+    // Section19_Constant_Prepocessor_Directives_and_Namespace();
+    Section20_Destructor_and_Virtual_Destructors();
     system("PAUSE");
     return 1;
 }

@@ -30,12 +30,13 @@ class Stack{
             }
             cout<<endl;
         }
+        ~Stack();
 };
 template<class T>
 Stack<T>::Stack(int size)
 {
     this->size=size;
-    pStk = new T[10];
+    pStk = new T[this->size];
 }
 
 template<class T>
@@ -52,6 +53,16 @@ void Stack<T>::Pop(T &nData)
     if (top==-1) throw StackUnderFlow();
     nData=pStk[top];
     top--;
+}
+
+template<class T>
+Stack<T>::~Stack()
+{
+    // because we have allocated some Object in Heap Memory
+    // the the memory have to be deleted when the Object destroyed
+    delete []pStk;
+    pStk=nullptr;
+    cout<<"Stack deleted and Heap Memory Allocation also deleted to avoid MEM-LEAK"<<endl;
 }
 
 #endif
