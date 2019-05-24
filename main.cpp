@@ -12,6 +12,9 @@
 #include "sec16\friend.h"
 #include "sec16\inner_nested.h"
 #include "sec17\exception.h"
+#include <vector>
+#include <list>
+#include <map>
 using namespace std;
 
 
@@ -545,11 +548,172 @@ void Section20_Destructor_and_Virtual_Destructors()
         Car *pCar = new Innova();
         delete pCar;
         cout<<endl;
-
-
-
 }
+void Section22_STL()
+{
+    cout<<"Add breakpoint"<<endl;
+    // vector                           <- Self managed Array
+        // Funktion
+        /*
+            1. push_back() 
+            2. pop_back()
+            3. insert()
+            4. remove()
+            5. size()
+            6. empty
+        */ 
+       // NB: #include <vector>
+    
+    vector<int> v={10,20,40,90};     // [10][20][40][90]
+    cout<<"vector v init    : ";
+    for(int x:v) cout<<x<<" ";cout<<endl;
+    
+    v.push_back(25);                 // [10][20][40][90][25]
+    cout<<"vector v push 25 : ";
+    for(int x:v) cout<<x<<" ";cout<<endl;
+    
+    v.push_back(70);                 // [10][20][40][90][25][70]
+    cout<<"vector v push 70 : ";
+    for(int x:v) cout<<x<<" ";cout<<endl;
+    
+    v.pop_back();                    // [10][20][40][90][25]
+    cout<<"vector v pop     : ";
+    for(int x:v) cout<<x<<" ";cout<<endl;
 
+    cout<<"Show from iterator vector v : ";
+    vector<int>::iterator itrV;
+    for (itrV=v.begin(); itrV!=v.end();itrV++)
+    {
+        cout<<"["<<*itrV<<"]";
+    }
+    cout<<endl<<endl;
+
+    // list                             <- Doubley Linked List  [(*lastNode)(data)(*nextNode)]
+        // Funktion for list forward_list and deque class
+        /*
+            1. push_back() // Add Element from back
+            2. pop_back()  // Show and Delete last Element
+            3. push_front() // Add Element from front
+            4. pop_front()  // Show and Delete first Element
+            5. insert()     
+            6. remove()
+            7. size()
+            8. empty()
+            9. front() // Show first Element
+            10. back() // show Last Element
+        */
+       // NB: #include <list>
+    list<int> l={45,15,27,78};        //   [45][15][27][78]
+    cout<<"list l init          : ";
+    for(int x:l) cout<<x<<" ";cout<<endl;
+    
+    l.push_back(25);                 // [45][15][27][78][25]
+    cout<<"list l push back 25  : ";
+    for(int x:l) cout<<x<<" ";cout<<endl;
+    
+    l.push_back(70);                 // [45][15][27][78][25][70]
+    cout<<"list l push back 70  : ";
+    for(int x:l) cout<<x<<" ";cout<<endl;
+
+    l.push_front(20);                 // [20][45][15][27][78][25][70]
+    cout<<"list l push front 20 : ";
+    for(int x:l) cout<<x<<" ";cout<<endl;
+    
+    l.pop_back();                    // [20][45][15][27][78][25]
+    cout<<"list l pop back      : ";
+    for(int x:l) cout<<x<<" ";cout<<endl;
+
+    l.pop_front();                    // [45][15][27][78][25]
+    cout<<"list l pop front     : ";
+    for(int x:l) cout<<x<<" ";cout<<endl;
+
+    cout<<"Show from iterator list l : ";
+    list<int>::iterator itrL;
+    for (itrL=l.begin(); itrL!=l.end();itrL++)
+    {
+        cout<<"["<<*itrL<<"]";
+    }
+    cout<<endl;
+    // forward_list                     <- Singlely Linked List [(data)(*nextNode)]
+        // Funktion for list forward_list and deque class
+        /*
+            1. push_back() // Add Element from back
+            2. pop_back()  // Show and Delete last Element
+            3. push_front() // Add Element from front
+            4. pop_front()  // Show and Delete first Element
+            5. insert()     
+            6. remove()
+            7. size()
+            8. empty()
+            9. front() // Show first Element
+            10. back() // show Last Element
+        */
+    // deque                            <- same like vector but data can be added from both sides   
+        // Funktion for list forward_list and deque class
+        /*
+            1. push_back() // Add Element from back
+            2. pop_back()  // Show and Delete last Element
+            3. push_front() // Add Element from front
+            4. pop_front()  // Show and Delete first Element
+            5. insert()     
+            6. remove()
+            7. size()
+            8. empty()
+            9. front() // Show first Element
+            10. back() // show Last Element
+        */
+    // priority_queue                   <- for max heap datastructur
+        // Funktion
+        /*
+            1. push() // Add Element
+            2. pop()  // Delete max element
+            3. size()
+            4. empty()
+        */
+    // stack                            <- queue LIFO (Last In First Out)
+        // Funktion
+        /*
+            1. push() // Add Element to the top
+            2. pop()  // Show and Delete top element
+            3. size()
+            4. empty()
+        */
+    // set                              <- storing from unique data ( no duplicate)
+        // Funktion
+        /*
+            1. insert()
+            2. 
+            3. size()
+            4. empty()
+        */
+    // multiset                         <- storing from data
+        // Funktion
+        /*
+            1. push() 
+            2. pop() 
+            3. size()
+            4. empty()
+        */
+    // map
+        // Funktion
+        /*
+            1. insert(pair<tmp1,tmp2>(1,2));
+            2. find()
+        */
+    map<int,string> m;
+    m.insert(pair<int,string>(1,"Arya"));
+    m.insert(pair<int,string>(2,"Andre"));
+    m.insert(pair<int,string>(4,"Angle"));
+    map<int,string>::iterator itrM;
+    for(itrM=m.begin(); itrM!=m.end();itrM++)
+    {
+        cout<<itrM->first<<" "<<itrM->second<<endl;
+    }
+    // find function
+    map<int,string>::iterator itrM2;
+    itrM2=m.find(3);
+    cout<<"Founded "<<itrM2->first<<" "<<itrM2->second<<endl;
+}
 int main(void)
 {
     // Section11_IntroductiontoOOPS();
@@ -558,7 +722,8 @@ int main(void)
     // Section15_Polymorphism();
     // Section16_Friend_and_Static_Members_or_Inner_Classe();
     // Section19_Constant_Prepocessor_Directives_and_Namespace();
-    Section20_Destructor_and_Virtual_Destructors();
+    // Section20_Destructor_and_Virtual_Destructors();
+    Section22_STL();
     system("PAUSE");
     return 1;
 }
