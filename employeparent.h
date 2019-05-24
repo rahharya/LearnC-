@@ -29,10 +29,28 @@ class FullTimeEmployee: public Employee{
             this->salary = salary;
         }
         int getSalary(){ return salary;}
-        friend ostream& operator<<(ostream& os, FullTimeEmployee emp){
+        friend ostream& operator<<(ostream& os, FullTimeEmployee &emp){
             os<<"Salary of "<<emp.getName()<<" is "<<emp.getSalary();
             return os;
         }
+        friend ofstream & operator<<(ofstream& ofs, FullTimeEmployee &emp)
+        {
+            ofs<<emp.getName()<<endl;
+            ofs<<emp.getEmployeId()<<endl;
+            ofs<<emp.getSalary()<<endl;
+            return ofs;
+        }
+        friend ifstream & operator>>(ifstream& ifs, FullTimeEmployee &emp)
+        {
+            string tempStr = emp.getName();
+            int nId = emp.getEmployeId();
+            int sal = emp.getSalary();
+            ifs >>tempStr
+                >>nId
+                >>sal;
+            return ifs;
+        }
+
 };
 
 class PartTimeEmployee: public Employee{
@@ -43,9 +61,16 @@ class PartTimeEmployee: public Employee{
             this->wage = wage;
         }
         int getWage(){ return wage;}
-        friend ostream& operator<<(ostream& os, PartTimeEmployee emp){
+        friend ostream& operator<<(ostream& os, PartTimeEmployee &emp){
             os<<"Wage of "<<emp.getName()<<" is "<<emp.getWage();
             return os;
+        }
+        friend ofstream& operator<<(ofstream& ofs, PartTimeEmployee &emp)
+        {
+            ofs<<emp.getName()<<endl;
+            ofs<<emp.getEmployeId()<<endl;
+            ofs<<emp.getWage()<<endl;
+            return ofs;
         }
 };
 

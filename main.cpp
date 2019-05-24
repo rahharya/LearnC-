@@ -546,29 +546,48 @@ void Section20_Destructor_and_Virtual_Destructors()
 }
 void Section21_IO_Stream()
 {
-    // Open / Create File to Write
-        //Class ofstream(string FileName)
-        ofstream ofs("My.txt",ios::trunc); 
-    // Writing Something in the File
-        ofs<<"David"<<endl;
-        ofs<<25<<endl;
-        ofs<<"cpp"<<endl;
-    // Close the File
-        ofs.close();
-    // Open File to Reading Purpose
-        ifstream infile;
-        infile.open("My.txt");
-        if(!infile.is_open()) cout<<"File cannot be opened"<<endl;
-        string str;
-        int x;
-        infile>>str;
-        infile>>x;
-        cout<<str<<" "<<x<<endl;
-        if(infile.eof()) // true when end of file
-        {
-            cout<<"End of File reached"<<endl;
-            infile.close();
-        }
+    // 224. Stream
+        // Open / Create File to Write
+            //Class ofstream(string FileName)
+            ofstream ofs("My.txt",ios::trunc); 
+        // Writing Something in the File
+            ofs<<"David"<<endl;
+            ofs<<25<<endl;
+            ofs<<"cpp"<<endl;
+        // Close the File
+            ofs.close();
+        // Open File to Reading Purpose
+            ifstream infile;
+            infile.open("My.txt");
+            if(!infile.is_open()) cout<<"File cannot be opened"<<endl;
+            string str;
+            int x;
+            infile>>str
+                    >>x;
+            
+            cout<<str<<" "<<x<<endl;
+            if(infile.eof()) // true when end of file
+            {
+                cout<<"End of File reached"<<endl;
+                infile.close();
+            }
+        // 229. Serilization
+            FullTimeEmployee Arya("Arya", 24, 3880), emp("hallo",12);
+            ofstream _emp_ofs("Employe.txt", ios::trunc);
+            _emp_ofs<<Arya;
+            ifstream _emp_infile;
+            _emp_infile.open("Employe.txt");
+            _emp_infile>>emp;
+            cout<<emp<<endl;
+            if(_emp_infile.eof()) // true when end of file
+            {
+                cout<<"End of File reached"<<endl;
+                _emp_infile.close();
+            }
+    // Try
+        float faktor1, faktor2;
+        Faktor(5,-8,-48,faktor1,faktor2);
+        cout<<faktor1<<" "<<faktor2<<endl;
 }
 
 int main(void)
